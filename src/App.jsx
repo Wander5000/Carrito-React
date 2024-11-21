@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Product } from './components/Productos'
 
-function App() {
-  const [count, setCount] = useState(0)
+export function App() {
+
+  const Products = [
+
+    {
+      id: 1,
+      name: "Mens Casual T-Shirt",
+      price: 40000,
+      image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+    },
+    {
+      id: 2,
+      name: "Mens Cotton Jacket",
+      price: 65000,
+      image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+    },
+    {
+      id: 3,
+      name: "Mens Casual Slim Fit",
+      price: 30000,
+      image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+    }
+  ]
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <section className="buy-section">
+          <header className="shop-title">
+            <h1>La tiendita de Ropa UWU</h1>
+          </header>
+          <hr />
+          <section className='products-section'>
+          {Products.map(productinfo => {
+            const {image, price, name} =  productinfo
+            return(
+              <Product
+                image={image}
+                price={price}
+                name={name} />
+            )
+          })
+        }
+      </section>
+      </section>
+        <section className='cart-section'>
+
+      </section>
     </>
   )
 }
-
-export default App
